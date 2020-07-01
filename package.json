@@ -1,0 +1,30 @@
+{
+  "name": "gabgcdev",
+  "version": "1.0.0",
+  "description": "JS utilties for developing gabgc.dev",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start:dev": "webpack-dev-server",
+    "clean": "rm -rf dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabgc/gabgcdev.git"
+  },
+  "author": "Gabriel Gonzalez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabgc/gabgcdev/issues"
+  },
+  "homepage": "https://github.com/gabgc/gabgcdev#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.3.0",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.6",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
