@@ -17,4 +17,6 @@ jobs:
           timezone: US/Eastern
           
       - name: test
-        run: echo ${{ steps.current-time-outputs.time }}
+        env:
+          TIME: "${{ steps.current-time-outputs.time }}"
+        run: echo $TIME
