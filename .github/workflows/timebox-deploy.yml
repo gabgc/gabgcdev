@@ -5,10 +5,16 @@ on:
     branches: [ "master" ]
 
 jobs:
-  test-job:
-    name: Test Job 
+  get-timebox:
+    name: Determine whether job can run
     runs-on: ubuntu-latest
-
     steps:
-    - name: test
-      run: echo hello world
+      - name: Get Current Time
+        id: current-time
+        uses: josStorer/get-current-time@v2.1.1
+        with:
+          format: H:m:s
+          timezone: US/Eastern
+          
+      - name: test
+        run: echo ${{ steps.current-time-outputs.time }}
