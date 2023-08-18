@@ -12,15 +12,15 @@ jobs:
       - name: Get Current Time
         id: current-time
         uses: josStorer/get-current-time@v2.1.1
-        with:
-          utcOffset: "−05:00" # EST
 
       - name: Should Run
         env: 
-          HOUR: "${{ steps.current-time.outputs.hour }}"
+          HOUR: 13 # This is in UTC
+          LOWER_BOUND: 14 # 10 am EST
+          UPPER_BOUND: 21 # 5 pm EST
         run: |
           echo $HOUR
-          if (( $HOUR >= 9 && $HOUR < 17 )); then echo "SHOULD_RUN=y" >> $GITHUB_ENV; else echo "SHOULD_RUN=n" >> $GITHUB_ENV; fi 
+          if (( $HOUR >= $LOWER_BOUND && $HOUR < $UPPER_BOUND )); then echo "SHOULD_RUN=y" >> $GITHUB_ENV; else echo "SHOULD_RUN=n" >> $GITHUB_ENV; fi 
              
       - name: Test Should Run
         run: echo $SHOULD_RUN
