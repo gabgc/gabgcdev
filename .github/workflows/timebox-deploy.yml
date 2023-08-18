@@ -1,0 +1,14 @@
+name: Deploy Timeboxed
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  test-job:
+    name: Test Job 
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: test
+      run: echo hello world
