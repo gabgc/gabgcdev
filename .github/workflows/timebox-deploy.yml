@@ -18,5 +18,5 @@ jobs:
           
       - name: test
         env:
-          TIME: "${{ steps.current-time-outputs.time }}"
+          TIME: "${{ steps.current-time.outputs.time }}"
         run: echo $TIME
