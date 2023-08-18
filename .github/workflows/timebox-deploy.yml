@@ -13,10 +13,14 @@ jobs:
         id: current-time
         uses: josStorer/get-current-time@v2.1.1
         with:
-          format: H:m:s
-          timezone: US/Eastern
-          
-      - name: test
-        env:
-          TIME: "${{ steps.current-time.outputs.formattedTime }}"
-        run: echo $TIME
+          utcOffset: "−05:00" # EST
+
+      - name: Should Run
+        env: 
+          HOUR: "${{ steps.current-time.outputs.hour }}"
+        run: |
+          echo $HOUR
+          if (( $HOUR >= 9 && $HOUR < 17 )); then echo "SHOULD_RUN=y" >> $GITHUB_ENV; else echo "SHOULD_RUN=n" >> $GITHUB_ENV; fi 
+             
+      - name: Test Should Run
+        run: echo $SHOULD_RUN
